@@ -1,4 +1,37 @@
 // search
+$('.btn-danger').click(function () {
+
+  if(document.querySelector('.swipedown')){
+  var player = document.querySelector('.js-playlist');
+  player.style.top = "70%";
+  document.querySelector('#putTheWidgetHere').style.margin = 0;
+  document.querySelector('.fa').classList.remove("fa-chevron-down");
+document.querySelector('.fa').classList.add("fa-chevron-up");
+document.querySelector('.btn').classList.remove("swipedown");
+document.querySelector('.btn').classList.add("swipeup");
+}
+else {
+  var player = document.querySelector('.js-playlist');
+    player.style.top = 0;
+    document.querySelector('#putTheWidgetHere').style.margin = "10%";
+    document.querySelector('.fa').classList.remove("fa-chevron-up");
+  document.querySelector('.fa').classList.add("fa-chevron-down");
+  document.querySelector('.btn').classList.remove("swipeup");
+  document.querySelector('.btn').classList.add("swipedown");
+}
+
+});
+// $('.swipeup').click(function () {
+//   var player = document.querySelector('.js-playlist');
+//   player.style.top = 0;
+//   document.querySelector('#putTheWidgetHere').style.margin = "10%";
+//   document.querySelector('.fa').classList.remove("fa-chevron-up");
+// document.querySelector('.fa').classList.add("fa-chevron-down");
+// document.querySelector('.btn').classList.remove("swipeup");
+// document.querySelector('.btn').classList.add("swipedown");
+//
+// });
+
 $('.js-submit').click(function(){
   var input = document.querySelector('.input-search').value;
   console.log(input);
@@ -63,7 +96,7 @@ tracks.forEach(function(track)
   var contentatag = document.createElement('a');
   var text = document.createTextNode(track.title);
   contentatag.appendChild(text);
-  contentatag.href = track.permalink_url;
+  // contentatag.href = track.permalink_url;
   contentatag.target = "_blank";
   cardcontentheader.appendChild(contentatag);
 
@@ -110,14 +143,22 @@ SoundCloudAPI.playTrack = function (tracklink) {
   console.log(tracklink);
   var playerid = document.querySelector('.js-playlist');
   playerid.style.display = "";
-  console.log(playerid.children[0].childNodes);
-  console.log(document.querySelector('#putTheWidgetHere'));
+  playerid.style.top = 0;
+  document.querySelector('#putTheWidgetHere').style.margin = "10%";
+  document.querySelector('.fa').classList.remove("fa-chevron-up");
+document.querySelector('.fa').classList.add("fa-chevron-down");
+document.querySelector('.btn').classList.remove("swipeup");
+document.querySelector('.btn').classList.add("swipedown");
+
+  // console.log(playerid.children[0].childNodes);
+  // console.log(document.querySelector('#putTheWidgetHere'));
 
 
   SC.oEmbed(tracklink, {
      element: document.getElementById('putTheWidgetHere')
 
    });
+ 
 
 
 // SC.oEmbed(tracklink, {
@@ -130,6 +171,7 @@ SoundCloudAPI.playTrack = function (tracklink) {
 //   console.log(embed.width) ;
 // });
 }
+
 
 
 // player
